@@ -20,7 +20,7 @@ class RouteGroup
 
     public function __construct(
         ?string $prefix = null,
-        ?array $middlewares = null,
+        array|string|null $middlewares = null,
     ) {
         $prefix && $this->setPrefix($prefix);
         $middlewares && $this->setMiddlewares($middlewares);

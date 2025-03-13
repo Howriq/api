@@ -8,8 +8,8 @@ use Fig\Http\Message\RequestMethodInterface;
 
 class Put extends AbstractRoute
 {
-    public function __construct(?string $path = null, null|array|string $handlers = null, ?string $name = null)
+    public function __construct(?string $path = null, null|array|string $middlewares = null, ?string $name = null)
     {
-        parent::__construct($path, $handlers, $name, RequestMethodInterface::METHOD_PUT);
+        parent::__construct($path, $middlewares, $name, RequestMethodInterface::METHOD_PUT);
     }
 }

@@ -8,8 +8,8 @@ use Fig\Http\Message\RequestMethodInterface;
 
 class Patch extends AbstractRoute
 {
-    public function __construct(?string $path = null, null|array|string $handlers = null, ?string $name = null)
+    public function __construct(?string $path = null, null|array|string $middlewares = null, ?string $name = null)
     {
-        parent::__construct($path, $handlers, $name, RequestMethodInterface::METHOD_PATCH);
+        parent::__construct($path, $middlewares, $name, RequestMethodInterface::METHOD_PATCH);
     }
 }

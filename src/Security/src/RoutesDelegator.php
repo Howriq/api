@@ -65,7 +65,7 @@ class RoutesDelegator
             ->excludeMiddlewares(ErrorResponseMiddleware::class)
             ->register($app);
 
-        (new RouteGroup('/group', [ErrorResponseMiddleware::class]))
+        (new RouteGroup('/group', ErrorResponseMiddleware::class))
             ->addRoute(
                 new Delete('/delete', TokenEndpointHandler::class, 'group::delete')
             )
