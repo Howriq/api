@@ -6,12 +6,14 @@ namespace Core\App;
 
 use Api\App\Factory\EntityListenerResolverFactory;
 use Core\App\Entity\EntityListenerResolver;
+use Core\App\Middleware\ResourceProviderMiddleware;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\Driver\AttributeDriver;
 use Doctrine\Persistence\Mapping\Driver\MappingDriverChain;
 use Dot\Cache\Adapter\ArrayAdapter;
 use Dot\Cache\Adapter\FilesystemAdapter;
+use Dot\DependencyInjection\Factory\AttributedServiceFactory;
 use Ramsey\Uuid\Doctrine\UuidBinaryOrderedTimeType;
 use Ramsey\Uuid\Doctrine\UuidBinaryType;
 use Ramsey\Uuid\Doctrine\UuidType;
@@ -36,6 +38,7 @@ class ConfigProvider
             'factories' => [
                 'doctrine.entity_manager.orm_default' => EntityManagerFactory::class,
                 EntityListenerResolver::class         => EntityListenerResolverFactory::class,
+                ResourceProviderMiddleware::class     => AttributedServiceFactory::class,
             ],
             'aliases'   => [
                 EntityManager::class          => 'doctrine.entity_manager.orm_default',

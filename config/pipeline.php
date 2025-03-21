@@ -8,6 +8,7 @@ use Api\App\Middleware\AuthorizationMiddleware;
 use Api\App\Middleware\ContentNegotiationMiddleware;
 use Api\App\Middleware\DeprecationMiddleware;
 use Api\App\Middleware\ResponseMiddleware;
+use Core\App\Middleware\ResourceProviderMiddleware;
 use Dot\ErrorHandler\ErrorHandlerInterface;
 use Dot\ResponseHeader\Middleware\ResponseHeaderMiddleware;
 use Mezzio\Application;
@@ -81,6 +82,7 @@ return function (Application $app): void {
     // - etc.
 
     $app->pipe(ResponseMiddleware::class);
+    $app->pipe(ResourceProviderMiddleware::class);
 
     // Register the dispatch middleware in the middleware pipeline
     $app->pipe(DispatchMiddleware::class);

@@ -32,6 +32,7 @@ class Message
     public const RESET_PASSWORD_USED              = 'Password reset request for hash: \'%s\' is invalid (used).';
     public const RESET_PASSWORD_VALID             = 'Password reset request for hash: \'%s\' is valid.';
     public const RESOURCE_NOT_ALLOWED             = 'You are not allowed to access this resource.';
+    public const RESOURCE_NOT_FOUND               = '%s not found.';
     public const RESTRICTION_DEPRECATION          = 'Cannot use both `%s` and `%s` attributes on the same object.';
     public const RESTRICTION_IMAGE                = 'File must be an image (jpg, png).';
     public const RESTRICTION_ROLES                = 'User accounts must have at least one role.';

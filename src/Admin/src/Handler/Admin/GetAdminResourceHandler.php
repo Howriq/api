@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Api\Admin\Handler\Admin;
 
 use Api\Admin\Service\AdminServiceInterface;
-use Api\App\Exception\NotFoundException;
 use Api\App\Handler\AbstractHandler;
+use Core\Admin\Entity\Admin;
+use Core\App\Attribute\Resource;
 use Dot\DependencyInjection\Attribute\Inject;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -21,13 +22,12 @@ class GetAdminResourceHandler extends AbstractHandler
     ) {
     }
 
-    /**
-     * @throws NotFoundException
-     */
+    #[Resource(class: Admin::class)]
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $admin = $this->adminService->findOneBy(['uuid' => $request->getAttribute('uuid')]);
-
-        return $this->createResponse($request, $admin);
+        return $this->createResponse(
+            $request,
+            $request->getAttribute(Resource::class)
+        );
     }
 }
